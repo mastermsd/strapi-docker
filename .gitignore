@@ -1,0 +1,5 @@
+db/
+db/WiredTiger.turtle
+db/WiredTiger.wt
+db/metrics.interim
+journal/

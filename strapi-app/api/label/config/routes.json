@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/labels",
+      "handler": "Label.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/labels/en",
+      "handler": "Label.format",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/labels/count",
+      "handler": "Label.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/labels/:_id",
+      "handler": "Label.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/labels",
+      "handler": "Label.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/labels/:_id",
+      "handler": "Label.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/labels/:_id",
+      "handler": "Label.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

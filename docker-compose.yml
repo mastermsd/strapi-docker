@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+#    environment:
+    ports:
+      - 1337:1337
+      - 27017:27017
+      - 80:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/strapi.conf
+    links:
+      - api
+    restart: always
+  api:
+    build: .
+    # image: '14280bd8920d'
+    environment:
+      - APP_NAME=strapi-app
+      - DATABASE_CLIENT=mongo
+      - DATABASE_URI=mongodb
+      - DATABASE_HOST=mongo
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapiDb
+      - DATABASE_SSL=false
+      - DATABASE_AUTHENTICATION_DATABASE=strapiDb
+      - HOST=mongo
+    ports:
+      - 1337:1337
+    volumes:
+      - ./strapi-app:/usr/src/api/strapi-app
+      #- /usr/src/api/strapi-app/node_modules
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    restart: always
